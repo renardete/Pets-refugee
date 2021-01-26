@@ -6,8 +6,10 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
+    "bootstrap": "^4.6.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
@@ -15,6 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:cy": "cypress run",
+    "test:cy:component:open": "cypress open --config-file cypress/cypress.component.json",
+    "test:cy:e2e:open": "cypress open --config-file cypress/cypress.component.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^6.3.0"
   }
 }
