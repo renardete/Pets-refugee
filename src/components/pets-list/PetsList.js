@@ -29,6 +29,9 @@ const PetsList = function() {
             })}
           </tbody>
         </table>        
+          {pets.length === 0 && 
+            <div test-id="empty-pet-list">No hay mascotas disponibles</div>
+          }
       </div>
     </div>
   );

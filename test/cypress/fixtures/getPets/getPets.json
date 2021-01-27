@@ -1,0 +1,5 @@
+[
+  {"name": "dog", "race": "labrador", "age": 5, "isVaccinated": true},
+  {"name": "cat", "race": "siames", "age": 3, "isVaccinated": true},
+  {"name": "bat", "race": "chino", "age": 20, "isVaccinated": false}
+]

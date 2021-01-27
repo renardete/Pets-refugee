@@ -18,8 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:cy": "cypress run",
-    "test:cy:component:open": "cypress open --config-file cypress/cypress.component.json",
-    "test:cy:e2e:open": "cypress open --config-file cypress/cypress.component.json",
+    "test:cy:component:open": "cypress open --config-file test/cypress/cypress.component.json",
+    "test:cy:e2e:open": "cypress open --config-file test/cypress/cypress.component.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
