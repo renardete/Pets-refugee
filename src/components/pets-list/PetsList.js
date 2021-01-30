@@ -1,15 +1,23 @@
-import PetItem from './PetItem'
 import React, {useState, useEffect} from 'react'
 import PetServices from '../../services/PetServices'
 
 const PetsList = function() {
-
+  const isCancelled = React.useRef(false);
   const [pets, setPets] = useState([])
 
-  useEffect(async () => {
-    const pets = await PetServices.getPets()
-    setPets(pets)
+  useEffect(() => {
+    fetchPets()
+    return () => {
+      isCancelled.current = true;
+    };
   }, [])
+
+  async function fetchPets() {
+    const pets = await PetServices.getPets()
+    if(!isCancelled.current){
+      setPets(pets)
+    }
+  }
 
   return (
     <div>      
@@ -25,7 +33,14 @@ const PetsList = function() {
           </thead>
           <tbody>
             {pets.map(pet => {
-              return <PetItem pet={pet} />
+              return (
+                <tr key={pet.id} test-id="pet-item">
+                  <td test-id="pet-name" >{pet.name}</td>
+                  <td test-id="pet-race">{pet.race}</td>
+                  <td test-id="pet-age">{pet.age}</td>
+                  <td test-id="pet-is-vaccinated">{pet.isVaccinated}</td>
+                </tr>
+              )             
             })}
           </tbody>
         </table>        

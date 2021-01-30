@@ -9,7 +9,7 @@ describe('Pets list should', () => {
     petsDashboard.interceptGetPetsRequest({fixture: 'getPets/getPets'})
     petsDashboard.visit()
 
-    petsDashboard.waitGetPetsResponse()
+    petsDashboard.waitGetPetsResponse() //remove if not necessary
     petsDashboard.getListItems()
       .should('have.length', 3)
   })

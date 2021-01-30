@@ -1,4 +1,6 @@
-const urlBase = 'https://localhost:9091/api'
+import fetch from 'node-fetch'
+
+const urlBase = 'http://localhost:9091/api'
 
 const readUrl = (url = '') =>
   url.startsWith('http://') || url.startsWith('https://') ? url : `${urlBase}/${url}`

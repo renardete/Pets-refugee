@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
     "bootstrap": "^4.6.0",
+    "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -18,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:cy": "cypress run",
-    "test:cy:component:open": "cypress open --config-file test/cypress/cypress.component.json",
+    "test:test-library:component": "jest --runInBand -c test/jest.component.config.js",
+    "test:cy:component:open": "cypress run --config-file test/cypress/cypress.component.json",
     "test:cy:e2e:open": "cypress open --config-file test/cypress/cypress.component.json",
     "eject": "react-scripts eject"
   },
@@ -41,6 +43,11 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^6.3.0"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-jest": "^26.6.3",
+    "cypress": "^6.3.0",
+    "msw": "^0.26.0"
   }
 }

@@ -1,5 +1,3 @@
-
-
 class PetsDashboardPage {
 
   visit(){

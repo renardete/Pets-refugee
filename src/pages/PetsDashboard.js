@@ -1,14 +1,15 @@
 import PetsList from '../components/pets-list/PetsList'
 import {Link} from 'react-router-dom'
+import React from 'react'
 
 const PetsDashboard = function() {
 
   return (
     <div>
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
+      <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
         <Link to="/">
-          <span class="navbar-brand mb-0 h1">Pets Vacc</span>
+          <span className="navbar-brand mb-0 h1">Pets Vacc</span>
         </Link>
         </div>
       </nav>
