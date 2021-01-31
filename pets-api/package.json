@@ -1,0 +1,19 @@
+{
+  "name": "pets-api",
+  "version": "0.0.1",
+  "description": "Pets api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pets-api"
+  ],
+  "author": "Juan Reyes",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  }
+}

@@ -20,8 +20,8 @@
     "test": "react-scripts test",
     "test:cy": "cypress run",
     "test:test-library:component": "jest --runInBand -c test/jest.component.config.js",
-    "test:cy:component:open": "cypress run --config-file test/cypress/cypress.component.json",
-    "test:cy:e2e:open": "cypress open --config-file test/cypress/cypress.component.json",
+    "test:cy:component:open": "cypress open --config-file test/cypress/cypress.component.json",
+    "test:cy:e2e:open": "cypress open --config-file test/cypress/cypress.e2e.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
