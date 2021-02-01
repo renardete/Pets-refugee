@@ -11,7 +11,9 @@ configure({ testIdAttribute: 'test-id' })
 
 describe('Pets list should', () => {
 
+  // Definir la respuesta al interceptar peticion
   const server = setupServer(
+    // Definimos el handler de la peticion
     rest.get('http://localhost:9091/api/pets', (req, res, ctx) => {
       return res(ctx.json([
         {"id":"2a6278b0-778a-4aee-89e1-c166f72161b4", "name": "dog", "race": "labrador", "age": 5, "isVaccinated": true},
@@ -20,31 +22,46 @@ describe('Pets list should', () => {
       ]))
     }),
   )
-
+  
+  // Escuchamos peticiones
   beforeAll(() => server.listen())
+
+  // Reseteamos los handlers
   afterEach(() => server.resetHandlers())
+
+  // Cerramos conexión
   afterAll(() => server.close())
 
   test('load 3 Pets', async () => {
+    // Renderizamos el componente PetsDashboard
     act(() => {
       render(<PetsDashboard />, { wrapper: MemoryRouter});
     })
 
+    // Realizamos re intentos
     await waitFor(async () => {
-      expect(await screen.findAllByTestId('pet-item')).toHaveLength(3)
+      // Buscamos los elementos html y hacemos la validaciones
+      expect(screen.queryAllByTestId('pet-item')).toHaveLength(3)
       expect(screen.queryByTestId("empty-pet-list")).not.toBeInTheDocument();
     })
   }) 
 
   test('show empty list message when getPets list is empty', async () => {
+    // Reconfiguramos el handler para retornar un arreglo vacio
     server.use(
       rest.get('http://localhost:9091/api/pets', (req, res, ctx) => {
         return res(ctx.json([]))
     }))
-    render(<PetsDashboard />, { wrapper: MemoryRouter});
 
+    // Renderizamos el componente PetsDashboard
+    act(() => {
+      render(<PetsDashboard />, { wrapper: MemoryRouter});
+    }) 
+
+    // Realizamos re intentos
     await waitFor(async () => {
-      expect((await screen.findByTestId("empty-pet-list")).textContent).toEqual("No hay mascotas disponibles")
+      // Buscamos los elementos html y hacemos la validaciones
+      expect((screen.queryByTestId("empty-pet-list")).textContent).toEqual("No hay mascotas disponibles")
       expect(screen.getByTestId("empty-pet-list")).toBeVisible(); 
     })
   })
