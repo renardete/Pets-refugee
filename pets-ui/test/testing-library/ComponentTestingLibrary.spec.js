@@ -41,9 +41,7 @@ describe('Pets list should', () => {
       rest.get('http://localhost:9091/api/pets', (req, res, ctx) => {
         return res(ctx.json([]))
     }))
-    act(() => {
-      render(<PetsDashboard />, { wrapper: MemoryRouter});
-    })
+    render(<PetsDashboard />, { wrapper: MemoryRouter});
 
     await waitFor(async () => {
       expect((await screen.findByTestId("empty-pet-list")).textContent).toEqual("No hay mascotas disponibles")
