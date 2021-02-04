@@ -12,15 +12,4 @@ describe('Pets list should', () => {
       .should('have.length', 3)
   })
 
-  it('show empty list message when getPets list is empty', () => {
-    cy.intercept("/pets", {fixture: 'getPets/empty'})
-
-    // Visitamos la app
-    cy.visit('/')
-
-    // Verificamos el mensaje cuando no hay mascotas disponibles
-    cy.get('[test-id="empty-pet-list"]')
-      .should('be.visible')
-      .and('have.text', "No hay mascotas disponibles")
-  })
 })
