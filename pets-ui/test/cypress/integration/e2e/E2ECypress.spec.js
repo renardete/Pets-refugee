@@ -1,14 +1,14 @@
-import config from '../../support/config.test'
+import config from '../../../config.test'
 
-describe('Pets list dashboard', () => {
+describe('render 3 rows in pets dashboard', () => {
   
   // Borrar los datos de la BD antes de ejecutar cada prueba
   beforeEach(() => {
-    cy.request(config.apiUrl+'/pets')
+    cy.request(`${config.apiUrl}/pets`)
     .then((response) => {
       return JSON.parse(response.allRequestResponses[0]["Response Body"])
     }).each(pet => {
-      cy.request('DELETE', config.apiUrl+`/pets?id=${pet.id}`)
+      cy.request('DELETE', `${config.apiUrl}/pets?id=${pet.id}`)
     })
   })
 

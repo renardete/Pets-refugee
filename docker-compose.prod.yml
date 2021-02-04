@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  prod-ui:
+    container_name: sample-prod
+    build:
+      context: ./pets-ui/
+      dockerfile: Dockerfile.prod
+    ports:
+      - '9090:80'
+  prod-api:
+    container_name: sample-prod-api
+    build:
+      context: ./pets-api/
+      dockerfile: Dockerfile.prod
+    ports:
+      - '9091:8088'

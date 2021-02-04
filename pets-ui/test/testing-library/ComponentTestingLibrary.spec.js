@@ -6,6 +6,7 @@ import {act} from 'react-dom/test-utils'
 import '@testing-library/jest-dom/extend-expect'
 import { MemoryRouter } from 'react-router-dom'
 import PetsDashboard from '../../src/pages/PetsDashboard'
+import configTest from '../config.test'
 
 configure({ testIdAttribute: 'test-id' })
 
@@ -14,7 +15,7 @@ describe('Pets list should', () => {
   // Definir la respuesta al interceptar peticion
   const server = setupServer(
     // Definimos el handler de la peticion
-    rest.get('http://localhost:9091/api/pets', (req, res, ctx) => {
+    rest.get(`${configTest.apiUrl}/pets`, (req, res, ctx) => {
       return res(ctx.json([
         {"id":"2a6278b0-778a-4aee-89e1-c166f72161b4", "name": "dog", "race": "labrador", "age": 5, "isVaccinated": true},
         {"id":"9226eae2-0044-445b-b004-b47859f0c09b","name": "cat", "race": "siames", "age": 3, "isVaccinated": true},
@@ -32,7 +33,7 @@ describe('Pets list should', () => {
   // Cerramos conexión
   afterAll(() => server.close())
 
-  test('load 3 Pets', async () => {
+  test('render 3 rows in pets dashboard', async () => {
     // Renderizamos el componente PetsDashboard
     act(() => {
       render(<PetsDashboard />, { wrapper: MemoryRouter});
@@ -42,14 +43,13 @@ describe('Pets list should', () => {
     await waitFor(async () => {
       // Buscamos los elementos html y hacemos la validaciones
       expect(screen.queryAllByTestId('pet-item')).toHaveLength(3)
-      expect(screen.queryByTestId("empty-pet-list")).not.toBeInTheDocument();
     })
   }) 
 
   test('show empty list message when getPets list is empty', async () => {
     // Reconfiguramos el handler para retornar un arreglo vacio
     server.use(
-      rest.get('http://localhost:9091/api/pets', (req, res, ctx) => {
+      rest.get(`${configTest.apiUrl}/pets`, (req, res, ctx) => {
         return res(ctx.json([]))
     }))
 

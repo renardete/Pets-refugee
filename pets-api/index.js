@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const {getPets, addPet, delPet} = require('./repositories/petsRepository')
 const cors = require('cors')
-const port = 9091
+const port = 8088
 
 const baseDelay = 1000
 let delayMultiplier = 1
